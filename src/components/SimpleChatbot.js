@@ -3,10 +3,9 @@ import './SimpleChatbot.css';
 import { useNavigate } from 'react-router-dom'; // Para manejar la navegación
 
 const SimpleChatbot = () => {
-  const [selectedOption, setSelectedOption] = useState(null); // Opción seleccionada por el usuario
-  const navigate = useNavigate(); // Hook para navegación en React
+  const [selectedOption, setSelectedOption] = useState(null);
+  const navigate = useNavigate();
 
-  // Opciones predefinidas que el usuario verá inicialmente
   const predefinedQuestions = [
     'Hola',
     'Información sobre los cursos',
@@ -15,23 +14,22 @@ const SimpleChatbot = () => {
     'Formas de contacto',
   ];
 
-  // Función para manejar la selección de una opción
   const handleOptionClick = (option) => {
     setSelectedOption(option);
   };
 
-  // Función para mostrar el menú principal
   const handleBackToMenu = () => {
     setSelectedOption(null);
   };
 
-  // Funciones que manejan cada opción seleccionada
   const renderResponse = () => {
     switch (selectedOption) {
       case 'Hola':
         return (
           <>
-            <div className="bot-message">¡Bienvenido! Esta web te ayudará a encontrar información sobre cursos, eventos y más. 😊</div>
+            <div className="bot-message">
+              ¡Bienvenido! Esta web te ayudará a encontrar información sobre cursos, eventos y más. 😊
+            </div>
             <button onClick={handleBackToMenu}>Volver al menú principal</button>
           </>
         );
@@ -69,7 +67,7 @@ const SimpleChatbot = () => {
         return (
           <>
             <div className="bot-message">
-              Los servicios de la secretaría incluyen: gestión de inscripciones, certificados, y atención al estudiante.
+              Los servicios de la secretaría incluyen: gestión de inscripciones, certificados y atención al estudiante.
             </div>
             <button onClick={handleBackToMenu}>Volver al menú principal</button>
           </>
