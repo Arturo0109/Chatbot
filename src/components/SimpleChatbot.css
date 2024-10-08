@@ -5,6 +5,8 @@
   right: 20px;
   z-index: 1000;
   transition: all 0.3s ease; /* Suave transición al abrir/cerrar */
+  max-width: 100%; /* Asegura que no se salga de los bordes de la ventana */
+  max-height: 100%; /* Limita el alto máximo a la altura de la ventana */
 }
 
 /* Burbuja flotante de chat */
@@ -29,14 +31,75 @@
 
 /* Caja del chat */
 .chat-box {
-  width: 350px;
-  height: 450px;
+  width: 350px; /* Ancho base */
+  height: 450px; /* Altura base */
   background-color: #ffffff; /* Fondo blanco */
   border-radius: 10px;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
   display: flex;
   flex-direction: column;
-  overflow: hidden; /* Asegura que los bordes sean limpios */
+  resize: both; /* Permite redimensionar tanto en ancho como en alto */
+  min-width: 250px; /* Ancho mínimo reducido */
+  min-height: 300px; /* Altura mínima ajustada */
+  max-width: 90vw; /* Limita el ancho al tamaño de la ventana */
+  max-height: 90vh; /* Limita el alto al tamaño de la ventana */
+}
+
+/* Estilos para el área de mensajes */
+.chat-messages {
+  flex: 1;
+  height: 300px; /* Altura fija */
+  width: 100%; /* Ancho completo */
+  border: 1px solid #ddd; /* Borde ligero */
+  padding: 10px;
+  overflow-y: auto; /* Permite el scroll si el contenido excede el tamaño */
+  background-color: #f4f4f9; /* Fondo gris claro */
+  border-radius: 8px;
+  margin-bottom: 10px; /* Espacio inferior */
+}
+
+/* Mensaje del bot */
+.bot-message {
+  text-align: left;
+  margin: 10px;
+  padding: 10px;
+  background-color: #e2e2e2; /* Gris claro para mensajes del bot */
+  border-radius: 15px 15px 15px 0;
+  display: inline-block;
+}
+
+/* Mensaje del usuario */
+.user-message {
+  text-align: right;
+  margin: 10px;
+  padding: 10px;
+  background-color: #cce5ff; /* Azul claro para mensajes de usuario */
+  border-radius: 15px 15px 0 15px;
+  display: inline-block;
+}
+
+/* Estilos de entrada y botón */
+input {
+  width: 80%; /* Ancho del campo de entrada */
+  padding: 10px; /* Espaciado interno */
+  border-radius: 8px; /* Bordes redondeados */
+  border: 1px solid #ddd; /* Borde ligero */
+  font-size: 16px; /* Tamaño de fuente */
+}
+
+button {
+  padding: 10px; /* Espaciado interno */
+  margin-left: 10px; /* Espacio a la izquierda */
+  border: none; /* Sin borde */
+  background-color: #4CAF50; /* Verde */
+  color: white; /* Color del texto */
+  border-radius: 8px; /* Bordes redondeados */
+  font-size: 16px; /* Tamaño de fuente */
+  cursor: pointer; /* Cambia el cursor al pasar */
+}
+
+button:hover {
+  background-color: #45a049; /* Verde más oscuro al pasar */
 }
 
 /* Header del chat con el botón de cerrar */
@@ -55,35 +118,39 @@
   font-size: 18px;
 }
 
-/* Mensajes dentro del chat */
-.chat-messages {
+/* Pestaña de contactos */
+.contacts-container {
+  flex: 1; /* Asegura que ocupe todo el espacio disponible */
+  overflow-y: auto; /* Permite el scroll si es necesario */
+  max-width: 100%; /* Se ajusta al tamaño de la ventana */
+  max-height: 100%; /* Se ajusta al tamaño del contenedor del chat */
+  padding: 10px; /* Espaciado interno */
+}
+
+/* Elemento individual de contacto */
+.contact-item {
+  display: flex;
+  align-items: center;
+  padding: 10px;
+  background-color: #f8f9fa; /* Gris claro */
+  margin-bottom: 5px;
+  border-radius: 5px;
   flex: 1;
-  padding: 10px;
-  overflow-y: auto;
-  background-color: #f8f9fa; /* Gris muy claro */
 }
 
-/* Mensaje del bot */
-.bot-message {
-  text-align: left;
-  margin: 10px;
-  padding: 10px;
-  background-color: #e9ecef; /* Gris claro para mensajes del bot */
-  border-radius: 15px 15px 15px 0;
-  display: inline-block;
-  max-width: 80%; /* Limitar ancho para mejor legibilidad */
+.contact-item img {
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  margin-right: 10px;
 }
 
-/* Mensaje del usuario */
-.user-message {
-  text-align: right;
-  margin: 10px;
-  padding: 10px;
-  background-color: #ffc107; /* Amarillo brillante para mensajes de usuario */
-  border-radius: 15px 15px 0 15px;
-  display: inline-block;
-  color: black; /* Color del texto */
-  max-width: 80%; /* Limitar ancho para mejor legibilidad */
+.contact-item .contact-name {
+  font-size: 16px;
+  flex: 1; /* Asegura que el nombre se ajuste al espacio disponible */
+  overflow: hidden;
+  text-overflow: ellipsis; /* Corta el texto si es demasiado largo */
+  white-space: nowrap;
 }
 
 /* Botones de opciones */
@@ -138,4 +205,26 @@ button:focus {
 
 .chat-messages button:hover::after {
   transform: scale(1);
+}
+
+/* Media queries para hacerlo responsive */
+@media (max-width: 400px) {
+  .chat-box {
+    width: 90%; /* Ancho completo en pantallas pequeñas */
+    height: 70%; /* Altura más adaptable */
+  }
+
+  .chat-bubble {
+    width: 50px; /* Ajustar tamaño de la burbuja */
+    height: 50px;
+    font-size: 25px; /* Ajustar el tamaño del ícono */
+  }
+
+  .chat-header h4 {
+    font-size: 16px; /* Reducir el tamaño del texto del encabezado */
+  }
+
+  .chat-messages button {
+    font-size: 12px; /* Reducir tamaño del texto en botones */
+  }
 }
