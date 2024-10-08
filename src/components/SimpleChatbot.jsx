@@ -41,21 +41,24 @@ const SimpleChatbot = () => {
             <button onClick={handleBackToMenu}>Volver al menú principal</button>
           </>
         );
-      case 'Información sobre los cursos':
-        return (
-          <>
-            <div className="bot-message">
-              Puedes encontrar más información sobre nuestros cursos{' '}
-              <span className="link" onClick={() => navigate('/cursos')}>aquí</span>.
-            </div>
-            <button onClick={handleBackToMenu}>Volver al menú principal</button>
-          </>
-        );
+        case 'Información sobre los cursos':
+          return (
+            <>
+              <div className="bot-message">
+                Podrás encontrar más información sobre nuestra oferta educativa dando{' '}
+                <span className="link" onClick={() => window.open('https://www.secretariaticbuga.online/formacion-tic', '_blank')}>
+                  aquí
+                </span>.
+              </div>
+              <button onClick={handleBackToMenu}>Volver al menú principal</button>
+            </>
+          );
+        
       case 'Información de los eventos':
         return (
           <>
             <div className="bot-message">
-              Aquí tienes un video sobre los próximos eventos:
+              Aquí informacion sobre los próximos eventos:
               <div className="video-container">
                 <iframe
                   width="250"

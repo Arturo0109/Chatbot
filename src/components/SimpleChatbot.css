@@ -229,4 +229,14 @@ button:focus {
   .chat-messages button {
     font-size: 12px; /* Reducir tamaño del texto en botones */
   }
+  .link {
+    color: blue; /* Color del enlace */
+    text-decoration: underline; /* Subrayado del enlace */
+    cursor: pointer; /* Cambia el cursor al pasar sobre el enlace */
+  }
+  
+  .link:hover {
+    color: darkblue; /* Cambia el color al pasar el mouse */
+  }
+  
 }
