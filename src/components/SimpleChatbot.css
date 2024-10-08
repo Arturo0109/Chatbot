@@ -4,11 +4,12 @@
   bottom: 20px;
   right: 20px;
   z-index: 1000;
+  transition: all 0.3s ease; /* Suave transición al abrir/cerrar */
 }
 
 /* Burbuja flotante de chat */
 .chat-bubble {
-  background-color: #003366; /* Azul oscuro */
+  background-color: #343a40; /* Azul brillante */
   color: white;
   width: 60px;
   height: 60px;
@@ -18,25 +19,31 @@
   align-items: center;
   font-size: 30px;
   cursor: pointer;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.15);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+  transition: transform 0.2s; /* Efecto de zoom al pasar el mouse */
+}
+
+.chat-bubble:hover {
+  transform: scale(1.1); /* Aumenta ligeramente al pasar el mouse */
 }
 
 /* Caja del chat */
 .chat-box {
-  width: 300px;
-  height: 400px;
-  background-color: #f3f3f3; /* Fondo gris claro */
+  width: 350px;
+  height: 450px;
+  background-color: #ffffff; /* Fondo blanco */
   border-radius: 10px;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
   display: flex;
   flex-direction: column;
+  overflow: hidden; /* Asegura que los bordes sean limpios */
 }
 
 /* Header del chat con el botón de cerrar */
 .chat-header {
-  background-color: #004d00; /* Verde oscuro */
+  background-color: #343a40; /* Gris oscuro */
   color: white;
-  padding: 10px;
+  padding: 15px;
   border-radius: 10px 10px 0 0;
   display: flex;
   justify-content: space-between;
@@ -45,7 +52,7 @@
 
 .chat-header h4 {
   margin: 0;
-  font-size: 16px;
+  font-size: 18px;
 }
 
 /* Mensajes dentro del chat */
@@ -53,47 +60,53 @@
   flex: 1;
   padding: 10px;
   overflow-y: auto;
-  background-color: #fafafa; /* Gris muy claro */
+  background-color: #f8f9fa; /* Gris muy claro */
 }
 
+/* Mensaje del bot */
 .bot-message {
   text-align: left;
   margin: 10px;
   padding: 10px;
-  background-color: #e6e6e6; /* Gris claro para mensajes del bot */
+  background-color: #e9ecef; /* Gris claro para mensajes del bot */
   border-radius: 15px 15px 15px 0;
   display: inline-block;
+  max-width: 80%; /* Limitar ancho para mejor legibilidad */
 }
 
+/* Mensaje del usuario */
 .user-message {
   text-align: right;
   margin: 10px;
   padding: 10px;
-  background-color: #ffcc00; /* Naranja claro para mensajes de usuario */
+  background-color: #ffc107; /* Amarillo brillante para mensajes de usuario */
   border-radius: 15px 15px 0 15px;
   display: inline-block;
   color: black; /* Color del texto */
+  max-width: 80%; /* Limitar ancho para mejor legibilidad */
 }
 
 /* Botones de opciones */
 .chat-messages button {
-  background-color: #0066cc; /* Azul claro para botones */
+  background-color: #007bff; /* Azul brillante para botones */
   color: white;
   border: none;
   border-radius: 5px;
-  padding: 10px;
-  margin: 5px;
+  padding: 12px;
+  margin: 5px 0;
   cursor: pointer;
   font-size: 14px;
   display: block;
   width: 100%;
   text-align: center;
+  transition: background-color 0.3s; /* Transición suave para hover */
 }
 
 .chat-messages button:hover {
-  background-color: #005bb5; /* Azul más oscuro al hacer hover */
+  background-color: #0056b3; /* Azul más oscuro al hacer hover */
 }
 
+/* Sin borde al hacer clic en el botón */
 button:focus {
   outline: none;
 }
@@ -102,4 +115,27 @@ button:focus {
 .video-container {
   margin-top: 10px;
   text-align: center;
+}
+
+/* Estilo de transiciones */
+.chat-messages button {
+  position: relative;
+  overflow: hidden;
+}
+
+.chat-messages button::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(255, 255, 255, 0.2);
+  transition: transform 0.5s;
+  transform: scale(0);
+  z-index: 1;
+}
+
+.chat-messages button:hover::after {
+  transform: scale(1);
 }
