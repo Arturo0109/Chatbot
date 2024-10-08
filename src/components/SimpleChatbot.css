@@ -45,6 +45,24 @@
   max-height: 90vh; /* Limita el alto al tamaño de la ventana */
 }
 
+/* Header del chat con el botón de cerrar */
+.chat-header {
+  background-color: #343a40; /* Gris oscuro */
+  color: white;
+  padding: 10px 15px; /* Espaciado */
+  border-radius: 10px 10px 0 0; /* Bordes redondeados en la parte superior */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%; /* Asegura que el encabezado ocupe todo el ancho de la caja del chat */
+}
+
+/* Título del encabezado */
+.chat-header h4 {
+  margin: 0;
+  font-size: 18px;
+}
+
 /* Estilos para el área de mensajes */
 .chat-messages {
   flex: 1;
@@ -54,7 +72,7 @@
   padding: 10px;
   overflow-y: auto; /* Permite el scroll si el contenido excede el tamaño */
   background-color: #f4f4f9; /* Fondo gris claro */
-  border-radius: 8px;
+  border-radius: 8px; /* Bordes redondeados */
   margin-bottom: 10px; /* Espacio inferior */
 }
 
@@ -91,31 +109,15 @@ button {
   padding: 10px; /* Espaciado interno */
   margin-left: 10px; /* Espacio a la izquierda */
   border: none; /* Sin borde */
-  background-color: #4CAF50; /* Verde */
-  color: white; /* Color del texto */
+  background-color: #ffffff; /* Verde */
+  color: rgb(3, 3, 3); /* Color del texto */
   border-radius: 8px; /* Bordes redondeados */
   font-size: 16px; /* Tamaño de fuente */
   cursor: pointer; /* Cambia el cursor al pasar */
 }
 
 button:hover {
-  background-color: #45a049; /* Verde más oscuro al pasar */
-}
-
-/* Header del chat con el botón de cerrar */
-.chat-header {
-  background-color: #343a40; /* Gris oscuro */
-  color: white;
-  padding: 15px;
-  border-radius: 10px 10px 0 0;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.chat-header h4 {
-  margin: 0;
-  font-size: 18px;
+  background-color: #007bff; /* Azul brillante al pasar */
 }
 
 /* Pestaña de contactos */
